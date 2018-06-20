@@ -6,6 +6,11 @@ south vi 系统脚手架，专注内部SVN系统脚手架
 > 特点: 专注内容开发，从SVN下载模板
 
 
+### Install / 安装
+
+```
+npm install -g svi-cli
+```
 
 ### Usage / 用法
 
