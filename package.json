@@ -21,7 +21,7 @@
     "south.vi"
   ],
   "author": "PolanZ",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/PolanZ/svi-cli/issues"
   },

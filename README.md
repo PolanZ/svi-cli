@@ -2,6 +2,7 @@
 south vi 系统脚手架，专注内部SVN系统脚手架
 
 > feature: Download form svn, Focus on internal development.
+>
 > 特点: 专注内容开发，从SVN下载模板
 
 
@@ -13,6 +14,12 @@ south vi 系统脚手架，专注内部SVN系统脚手架
 svi init [template] [project-name]
 
 ```
+
+### Support / 支持
+
+> Currently only support ``` backstage ``` template.
+>
+> 目录只开发支持 ``` backstage ``` 模板
 
 ### Example / 例子
 
@@ -26,4 +33,4 @@ svi init backstage my-project
 
 ### License
 
-[MIT](http://opensource.org/licenses/MIT)
+Apache License 2.0
