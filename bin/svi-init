@@ -76,9 +76,14 @@ if (inPlace) { // 判断是否在根目录里安装
  */
 
 function run() {
-  if (exists(cahcePath)) rm(cahcePath)
-  // check svn identity...
-  getUser(downloadAndGenerate);
+  // check name
+  if (exists(name)) {
+    logger.fatal(name + ' is exisits, Please generate others.')
+  } else {
+    if (exists(cahcePath)) rm(cahcePath)
+    // get svn identity...
+    getUser(downloadAndGenerate);
+  }
 }
 
 /* 
