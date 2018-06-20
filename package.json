@@ -1,6 +1,6 @@
 {
   "name": "svi-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a simple CLI scaffolding for south.",
   "main": "index.js",
   "bin": {
