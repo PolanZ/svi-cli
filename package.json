@@ -1,0 +1,48 @@
+{
+  "name": "svi-cli",
+  "version": "1.0.0",
+  "description": "a simple CLI scaffolding for south.",
+  "main": "index.js",
+  "bin": {
+    "svi": "./bin/svi"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PolanZ/svi-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "south.vi"
+  ],
+  "author": "PolanZ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PolanZ/svi-cli/issues"
+  },
+  "homepage": "https://github.com/PolanZ/svi-cli#readme",
+  "dependencies": {
+    "async": "^2.6.1",
+    "chalk": "^2.4.1",
+    "consolidate": "^0.15.1",
+    "commander": "^2.15.1",
+    "handlebars": "^4.0.11",
+    "inquirer": "^5.2.0",
+    "metalsmith": "^2.3.0",
+    "minimatch": "^3.0.4",
+    "multimatch": "^2.1.0",
+    "ora": "^2.1.0",
+    "request": "^2.86.0",
+    "rimraf": "^2.6.2",
+    "semver": "^5.5.0",
+    "svn-spawn": "^0.1.5",
+    "user-home": "^2.0.0"
+  },
+  "devDependencies": {
+  }
+}

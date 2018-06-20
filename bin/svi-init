@@ -1,0 +1,123 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const path = require('path')
+const exists = require('fs').existsSync
+const home = require('user-home')
+const inquirer = require('inquirer')
+const SVNClient = require('svn-spawn')
+const rm = require('rimraf').sync
+const ora = require('ora')
+const chalk = require('chalk')
+
+const logger = require('../lib/logger')
+const getUser = require('../lib/get-user')
+const generate = require('../lib/generate')
+
+/* 
+ *  Usage
+ */
+
+program
+  .usage('<template-name> <project-name>')
+  .option('-a, --all', 'install complete template')
+
+/**
+ * Help.
+ */
+
+program.on('--help', () => {
+  console.log()
+  console.log('  Examples:')
+  console.log()
+  console.log(chalk.gray('    # create a new project with an official template'))
+  console.log('    $ svi init backstage my-project -a')
+  console.log()
+})
+
+/**
+ * Help.
+ */
+
+function help() {
+  program.parse(process.argv)
+  if (program.args.length < 1) return program.help()
+}
+help()
+
+/* 
+ *  Settings
+ */
+const templateName = program.args[0]
+const projectName = program.args[1]
+const inPlace = !projectName || projectName === '.'
+const cahcePath = path.join(home, '.svi-template')
+const name = inPlace ? path.relative('../', process.cwd()) : projectName
+const to = path.resolve(projectName || '.')
+
+if (inPlace) { // 判断是否在根目录里安装
+  inquirer.prompt([{
+    type: 'confirm',
+    message: inPlace ?
+      'Generate project in current directory?' :
+      'Target directory exists. Continue?',
+    name: 'ok'
+  }]).then(answers => {
+    if (answers.ok) {
+      run()
+    }
+  }).catch(logger.fatal)
+} else {
+  run()
+}
+
+/**
+ * Check, download and generate the project.
+ */
+
+function run() {
+  if (exists(cahcePath)) rm(cahcePath)
+  // check svn identity...
+  getUser(downloadAndGenerate);
+}
+
+/* 
+ * Download Template and Generate
+*/
+function downloadAndGenerate(user) {
+  const svnClient = new SVNClient({
+    cwd: cahcePath,  // local path
+    username: user.username,
+    password: user.password,
+    noAuthCache: false
+  })
+
+  let url = 'http://172.16.10.131:8012/svn/SouthAI/research/SVI/trunk/04_code/svi-templates/backstage'
+  const spinner = ora('Downloading Template...')
+  spinner.start()
+  console.log()
+
+  // check different template
+  if (templateName === 'backstage') {
+    url = 'http://172.16.10.131:8012/svn/SouthAI/research/SVI/trunk/04_code/svi-templates/backstage'
+  }
+
+  // svn clone
+  svnClient.checkout(url,
+    function (err, data) {
+      spinner.stop()
+      process.stdout.write('\033c')
+      if (err) logger.fatal('Lost the svn checkout, please check svn command or your username and password!')
+      logger.success('template checkout success')
+      
+      const src = cahcePath
+      // rm .svn
+      rm(path.join(src, '.svn'))
+      
+      generate(name, src, to, err => {
+        if (err) logger.fatal(err)
+        console.log()
+        logger.success('Generated "%s".', name)
+      })
+    })
+}
