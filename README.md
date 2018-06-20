@@ -12,6 +12,7 @@ south vi 系统脚手架，专注内部SVN系统脚手架
 npm install -g svi-cli
 ```
 
+
 ### Usage / 用法
 
 ``` bash
@@ -20,11 +21,14 @@ svi init [template] [project-name]
 
 ```
 
+
 ### Support / 支持
 
 > Currently only support ``` backstage ``` template.
 >
 > 目录只开发支持 ``` backstage ``` 模板
+
+
 
 ### Example / 例子
 
@@ -32,10 +36,11 @@ svi init [template] [project-name]
 svi init backstage my-project
 ```
 
+
 ### Thanks / 感谢
 [VUE-CLI](https://github.com/vuejs/vue-cli)
 
 
 ### License
 
-Apache License 2.0
+[MIT](http://opensource.org/licenses/MIT)
