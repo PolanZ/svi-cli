@@ -22,11 +22,11 @@ svi init [template] [project-name]
 ```
 
 
-### Support / 支持
+### Have / 拥有
 
-> Currently only support ``` backstage ``` template.
+> Currently Have template / 目前拥有模板 
 >
-> 目录只开发支持 ``` backstage ``` 模板
+>``` backstage ``` ``` webpack-router-empty ```
 
 
 

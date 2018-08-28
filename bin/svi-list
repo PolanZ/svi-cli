@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+const logger = require('../lib/logger')
+const request = require('request')
+const chalk = require('chalk')
+
+/**
+ * Padding.
+ */
+
+console.log()
+process.on('exit', () => {
+  console.log()
+})
+
+/**
+ * List svn template.
+ */
+

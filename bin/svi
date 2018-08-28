@@ -4,5 +4,6 @@ program
     .version(require('../package').version)
     .usage('<command> [options]')
     .command('init', 'create new project / 创建新项目')
+    .command('list', 'check template list / 浏览模板列表')
     .parse(process.argv)
 // console.log(program.args)

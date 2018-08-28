@@ -97,14 +97,21 @@ function downloadAndGenerate(user) {
     noAuthCache: false
   })
 
-  let url = 'http://172.16.10.131:8012/svn/SouthAI/research/SVI/trunk/04_code/svi-templates/backstage'
+  let url = 'http://172.16.10.131:8012/svn/SouthAI/research/SVI/trunk/04_code/svi-templates/'
   const spinner = ora('Downloading Template...')
   spinner.start()
   console.log()
 
   // check different template
-  if (templateName === 'backstage') {
+  /* if (templateName === 'backstage') {
     url = 'http://172.16.10.131:8012/svn/SouthAI/research/SVI/trunk/04_code/svi-templates/backstage'
+  } else if (templateName === 'webpack-router-empty') {
+    url = 'http://172.16.10.131:8012/svn/SouthAI/research/SVI/trunk/04_code/svi-templates/webpack-router-empty'
+  } */
+  if (templateName) {
+    url = url + templateName
+  } else {
+    url = url + 'backstage'
   }
 
   // svn clone
